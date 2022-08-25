@@ -1,10 +1,9 @@
 """OpenAPI spec renderer."""
 
 import sys
-if sys.version_info >= (3, 3):
-    import collections.abc as collections
-else:
-    import collections
+
+import collections
+import collections.abc
 
 import copy
 import functools
@@ -179,7 +178,7 @@ def _get_schema_type(schema):
 
 
 _merge_mappings = deepmerge.Merger(
-    [(collections.Mapping, deepmerge.strategy.dict.DictStrategies("merge"))],
+    [(collections.abc.Mapping, deepmerge.strategy.dict.DictStrategies("merge"))],
     ["override"],
     ["override"],
 ).merge
